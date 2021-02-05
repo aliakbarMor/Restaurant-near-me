@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/profile" />
+
+    <item
+        android:icon="@drawable/ic_timer"
+        android:id="@+id/distanceNotification"
+        android:title="Timer to sending notification" />
+
+    <item
+        android:id="@+id/theme"
+        android:icon="@drawable/ic_moon"
+        android:title="@string/night_mode"
+        app:actionLayout="@layout/layout_switch" />
+
+    <item
+        android:id="@+id/about"
+        android:title="about me" />
+
+
+</menu>

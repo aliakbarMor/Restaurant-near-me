@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="mor.aliakbar.restaurantnearme.storage.database.model.Meal" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl">
+
+        <TextView
+            android:id="@+id/meal_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="اسم وعده غذایی"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/edt_meal_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="@={viewmodel.name}"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/meal_name" />
+
+        <TextView
+            android:id="@+id/txt_start_time_order"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="ساعت شروع سفارش"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/edt_meal_name" />
+
+        <TimePicker
+            android:id="@+id/clock_start_time_order"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layoutDirection="ltr"
+            android:timePickerMode="spinner"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/txt_start_time_order" />
+
+        <TextView
+            android:id="@+id/txt_end_time_order"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="ساعت پایان سفارش"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/clock_start_time_order" />
+
+        <TimePicker
+            android:id="@+id/clock_end_time_order"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layoutDirection="ltr"
+            android:timePickerMode="spinner"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/txt_end_time_order" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

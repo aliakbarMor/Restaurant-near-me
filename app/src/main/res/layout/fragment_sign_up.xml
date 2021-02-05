@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="mor.aliakbar.restaurantnearme.ui.profile.SignUpViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutDirection="rtl">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="8dp"
+            android:padding="4dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="register"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_back"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/img_back" />
+
+        <EditText
+            android:id="@+id/edt_email"
+            style="@style/editTextLogin"
+            android:layout_marginTop="24dp"
+            android:hint="@string/email"
+            android:layoutDirection="rtl"
+            android:text="@={viewmodel.user.email}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/app_name" />
+
+        <EditText
+            android:id="@+id/edt_pass"
+            style="@style/editTextLogin"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:text="@={viewmodel.user.password}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edt_email" />
+
+
+        <EditText
+            android:id="@+id/edt_repeat_pass"
+            style="@style/editTextLogin"
+            android:layout_width="match_parent"
+            android:hint="@string/repeatPassword"
+            android:inputType="textPassword"
+            android:text="@={viewmodel.repeatPassword}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edt_pass" />
+
+        <EditText
+            android:id="@+id/edt_name"
+            style="@style/editTextLogin"
+            android:hint="نام"
+            android:text="@={viewmodel.user.name}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edt_repeat_pass" />
+
+        <EditText
+            android:id="@+id/edt_family"
+            style="@style/editTextLogin"
+            android:hint="نام خانوادگی"
+            android:text="@={viewmodel.user.family}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edt_name" />
+
+        <EditText
+            android:id="@+id/edt_phone_number"
+            style="@style/editTextLogin"
+            android:hint="شماره تماس"
+            android:inputType="phone"
+            android:text="@={viewmodel.user.phoneNumber}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edt_family" />
+
+        <Button
+            android:id="@+id/btn_login_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:onClick="@{()-> viewmodel.onSignUpClick()}"
+            android:padding="16dp"
+            android:text="@string/signUp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edt_phone_number" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

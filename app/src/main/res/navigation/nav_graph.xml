@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host"
+    app:startDestination="@id/mapFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="mor.aliakbar.restaurantnearme.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_restDetailFragment"
+            app:destination="@id/restDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/restDetailFragment"
+        android:name="mor.aliakbar.restaurantnearme.ui.food.RestDetailFragment"
+        android:label="fragment_rest_detail"
+        tools:layout="@layout/fragment_rest_detail">
+        <argument
+            android:name="restaurant"
+            app:argType="mor.aliakbar.restaurantnearme.storage.database.model.Restaurant" />
+        <action
+            android:id="@+id/action_restDetailFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="mor.aliakbar.restaurantnearme.ui.map.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_mapFragment_to_addNewRestaurantFragment"
+            app:destination="@id/addNewRestaurantFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="mor.aliakbar.restaurantnearme.ui.profile.ProfileFragment"
+        android:label="ProfileFragment">
+        <action
+            android:id="@+id/action_profileFragment_to_logInFragment"
+            app:destination="@id/logInFragment"
+            app:popUpTo="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/logInFragment"
+        android:name="mor.aliakbar.restaurantnearme.ui.profile.LogInFragment"
+        android:label="LogInFragment">
+        <action
+            android:id="@+id/action_logInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_logInFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="mor.aliakbar.restaurantnearme.ui.profile.SignUpFragment"
+        android:label="SignUpFragment">
+        <action
+            android:id="@+id/action_signUpFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewRestaurantFragment"
+        android:name="mor.aliakbar.restaurantnearme.ui.addNewRest.AddNewRestaurantFragment"
+        android:label="AddNewRestaurantFragment" >
+        <argument
+            android:name="latlng"
+            app:argType="com.mapbox.mapboxsdk.geometry.LatLng" />
+    </fragment>
+</navigation>

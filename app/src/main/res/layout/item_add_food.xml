@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="mor.aliakbar.restaurantnearme.storage.database.model.Food" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl">
+
+        <TextView
+            android:id="@+id/food_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="اسم غذا"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/edt_food_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="@={viewmodel.name}"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/food_name" />
+
+        <TextView
+            android:id="@+id/food_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="قیمت غذا"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/edt_food_name" />
+
+
+        <EditText
+            android:id="@+id/edt_price_food"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="right"
+            android:text="@={viewmodel.price}"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/food_price" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

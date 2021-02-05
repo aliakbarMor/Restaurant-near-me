@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="mor.aliakbar.restaurantnearme.ui.addNewRest.AddNewRestViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layoutDirection="rtl"
+            tools:context=".view.profile.ProfileFragment">
+
+            <TextView
+                android:id="@+id/restaurant_registration"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:text="ثبت رستوران"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="@id/guideline_start"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/name_restaurant"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="نام رستوران"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+                app:layout_constraintRight_toRightOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@id/restaurant_registration" />
+
+
+            <EditText
+                android:id="@+id/edt_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="@={viewmodel.restaurant.name}"
+                app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+                app:layout_constraintRight_toRightOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@id/name_restaurant" />
+
+            <TextView
+                android:id="@+id/text_img_rest"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="عکس رستوران"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+                app:layout_constraintRight_toRightOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@id/edt_name" />
+
+            <ImageView
+                android:id="@+id/image_rest"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/placeholder_choose_img"
+                app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+                app:layout_constraintRight_toRightOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@+id/text_img_rest" />
+
+            <TextView
+                android:id="@+id/foods"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="غذاها"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+                app:layout_constraintRight_toRightOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@id/image_rest" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_add_food"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+                app:layout_constraintRight_toRightOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@id/foods" />
+
+            <TextView
+                android:id="@+id/txt_add_food"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:text="+ اضافه کردن غذا"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+                app:layout_constraintRight_toRightOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@id/recycler_add_food" />
+
+            <TextView
+                android:id="@+id/txt_meals"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="زمان های سفارش"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+                app:layout_constraintRight_toRightOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@id/txt_add_food" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_add_meal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+                app:layout_constraintRight_toRightOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@id/txt_meals" />
+
+            <TextView
+                android:id="@+id/txt_add_meal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:text="+ اضافه کردن زمان سفارش"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+                app:layout_constraintRight_toRightOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@id/recycler_add_meal" />
+
+            <Button
+                android:id="@+id/confirm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="20dp"
+                android:text="ثبت"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+                app:layout_constraintRight_toRightOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@+id/txt_add_meal" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="20dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="20dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

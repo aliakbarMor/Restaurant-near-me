@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="mor.aliakbar.restaurantnearme.ui.profile.ProfileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutDirection="rtl"
+        tools:context=".view.profile.ProfileFragment">
+
+        <TextView
+            android:id="@+id/information_user"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="اطلاعات کابری"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="نام"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/information_user" />
+
+
+        <EditText
+            android:id="@+id/edt_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="right"
+            android:text="@{viewmodel.user.name}"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/name" />
+
+        <TextView
+            android:id="@+id/last_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="نام خانوادگی"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/edt_name" />
+
+
+        <EditText
+            android:id="@+id/edt_last_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="right"
+            android:text="@{viewmodel.user.family}"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/last_name" />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="شماره موبایل"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/edt_last_name" />
+
+
+        <EditText
+            android:id="@+id/edt_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="right"
+            android:text="@{viewmodel.user.phoneNumber}"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/phone" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="ایمیل"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/edt_phone" />
+
+
+        <EditText
+            android:id="@+id/edt_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="right"
+            android:text="@{viewmodel.user.email}"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/email" />
+
+        <TextView
+            android:id="@+id/change_pass"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="تغییر رمز عبور"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@id/edt_email" />
+
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="20dp"
+            android:text="ثبت تغییرات"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+            app:layout_constraintRight_toRightOf="@id/guideline_start" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

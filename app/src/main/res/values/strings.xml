@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">RestaurantNearMe</string>
+
+    <string name="mapbox_access_token">sk.eyJ1IjoiYWxpYWtiYXJtb3IiLCJhIjoiY2tpNjNkd2NjODB0ZDJ0bDYzb3lva2R6OCJ9.T0iVnMajSDfDrMUyde-tUg</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_location">new location</string>
+
+    <string name="email">ایمیل</string>
+    <string name="password">کلمه عبور</string>
+    <string name="repeatPassword">تکرار کلمه عبور</string>
+    <string name="signUp">ثبت نام</string>
+    <string name="logIn">ورود به حساب کاربری</string>
+    <string name="night_mode">Night Mode</string>
+    <string name="profile">Profile</string>
+
+</resources>
