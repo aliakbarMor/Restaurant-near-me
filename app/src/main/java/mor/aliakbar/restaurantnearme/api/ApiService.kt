@@ -36,20 +36,20 @@ interface ApiService {
     @GET("meal.php")
     fun getMeals(): Call<ArrayList<Meal>>
 
-    @GET("vote.php")
+    @GET("point.php")
     fun isVote(
         @Query("rest_id") rest_id: Long,
         @Query("user_id") user_id: Long
     ): Call<Vote>
 
-    @GET("vote.php")
+    @GET("point.php")
     fun vote(
         @Query("rest_id") rest_id: Long,
         @Query("user_id") user_id: Long,
         @Query("score") score: Int
     ): Call<Vote>
 
-    @GET("vote.php")
+    @GET("point.php")
     fun getAllVote(
         @Query("rest_id") rest_id: Long,
     ): Call<List<Vote>>

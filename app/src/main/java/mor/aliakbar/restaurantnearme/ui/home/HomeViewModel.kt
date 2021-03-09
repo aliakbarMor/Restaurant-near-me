@@ -6,7 +6,6 @@ import mor.aliakbar.restaurantnearme.api.ApiManager
 import mor.aliakbar.restaurantnearme.storage.database.AppRepository
 import mor.aliakbar.restaurantnearme.storage.database.model.Restaurant
 import mor.aliakbar.restaurantnearme.storage.sharedPrefs.PreferencesManager
-import mor.aliakbar.restaurantnearme.utils.Utility
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor() : ViewModel() {

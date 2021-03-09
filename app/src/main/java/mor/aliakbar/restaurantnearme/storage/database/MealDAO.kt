@@ -18,6 +18,9 @@ interface MealDAO {
     @Query("SELECT * FROM meals WHERE restaurantId = :restaurantId")
     fun getMealsByRestaurantId(restaurantId: Long): List<Meal>
 
-    @Query("DELETE FROM meals")
-    fun deleteAll()
+    @Query("DELETE FROM meals WHERE isInServer = :isInServer")
+    fun deleteAll(isInServer: Boolean = true)
+
+    @Query("DELETE FROM meals WHERE id = :id")
+    fun delete(id: Long)
 }

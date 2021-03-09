@@ -3,6 +3,8 @@ package mor.aliakbar.restaurantnearme.notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.core.app.NotificationCompat
@@ -33,9 +35,20 @@ class AppNotification private constructor(private val context: Context) {
         notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notificationChannel: NotificationChannel
+
+        val soundUri = Uri.parse(
+            "android.resource://"
+                    + context.packageName + "/" + R.raw.approach_the_restaurant
+        )
+        val mediaPlayer = MediaPlayer()
+        mediaPlayer.setDataSource(context, soundUri)
+        mediaPlayer.prepare()
+        mediaPlayer.start()
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             notificationChannel =
                 NotificationChannel("app_id", "app", NotificationManager.IMPORTANCE_HIGH)
+            notificationChannel.setSound(null, null)
             notificationManager.createNotificationChannel(notificationChannel)
         }
         builder = NotificationCompat.Builder(context, "app_id")
@@ -56,7 +69,6 @@ class AppNotification private constructor(private val context: Context) {
             .setArguments(bundle)
             .createPendingIntent()
 
-
         builder
             .setContentTitle(rest.name)
             .setContentText(contentText)
@@ -66,6 +78,7 @@ class AppNotification private constructor(private val context: Context) {
             .setSmallIcon(R.drawable.ic_rest)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setStyle(NotificationCompat.DecoratedCustomViewStyle())
+            .setSound(null)
 
         notificationManager.notify(1929, builder.build())
     }

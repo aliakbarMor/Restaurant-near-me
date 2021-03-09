@@ -12,7 +12,7 @@ import dagger.android.support.DaggerFragment
 import mor.aliakbar.restaurantnearme.R
 import mor.aliakbar.restaurantnearme.databinding.FragmentRestDetailBinding
 import mor.aliakbar.restaurantnearme.storage.database.model.Food
-import mor.aliakbar.restaurantnearme.viewmodel.ViewModelFactory
+import mor.aliakbar.restaurantnearme.ui.ViewModelFactory
 import javax.inject.Inject
 
 class RestDetailFragment : DaggerFragment() {

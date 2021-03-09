@@ -16,6 +16,12 @@ interface RestaurantDAO {
     @Query("DELETE FROM restaurants")
     fun deleteAll()
 
+    @Query("DELETE FROM restaurants WHERE id = :id")
+    fun delete(id: Long)
+
+    @Query("SELECT * FROM restaurants WHERE isInServer = :isInServer")
+    fun getRestaurantsByStoredOnServer(isInServer: Boolean): List<Restaurant>
+
     @Query("SELECT * FROM restaurants WHERE id = :id")
     fun getRestaurantById(id: Long): Restaurant
 
@@ -26,7 +32,6 @@ interface RestaurantDAO {
     fun getAllRest(): List<Restaurant>
 
     @Query("UPDATE restaurants SET distanceWithMe=:distanceWithMe WHERE id = :id")
-    fun update(distanceWithMe: Long, id: Long)
-
+    fun updateDistance(distanceWithMe: Long, id: Long)
 
 }

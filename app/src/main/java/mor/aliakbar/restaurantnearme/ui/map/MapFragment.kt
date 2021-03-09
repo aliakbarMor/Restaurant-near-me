@@ -18,7 +18,6 @@ import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
 import com.mapbox.geojson.Point
 import com.mapbox.mapboxsdk.Mapbox
-import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions
 import com.mapbox.mapboxsdk.location.LocationComponentOptions
 import com.mapbox.mapboxsdk.location.modes.CameraMode
@@ -40,8 +39,9 @@ import mor.aliakbar.restaurantnearme.R
 import mor.aliakbar.restaurantnearme.databinding.FragmentMapBinding
 import mor.aliakbar.restaurantnearme.storage.sharedPrefs.PreferencesManager
 import mor.aliakbar.restaurantnearme.utils.NetworkUtility
-import mor.aliakbar.restaurantnearme.viewmodel.ViewModelFactory
+import mor.aliakbar.restaurantnearme.ui.ViewModelFactory
 import timber.log.Timber
+import java.lang.Exception
 import javax.inject.Inject
 
 
@@ -253,10 +253,10 @@ class MapFragment : DaggerFragment(), PermissionsListener {
             Thread {
                 while (true) {
                     Thread.sleep(1000)
-                    viewModel.updateLocation(
-                        mapbox.locationComponent.lastKnownLocation?.latitude,
-                        mapbox.locationComponent.lastKnownLocation?.longitude
-                    )
+                        viewModel.updateLocation(
+                            mapbox.locationComponent.lastKnownLocation?.latitude,
+                            mapbox.locationComponent.lastKnownLocation?.longitude
+                        )
                 }
             }.start()
 

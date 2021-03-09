@@ -12,7 +12,7 @@ import androidx.navigation.findNavController
 import dagger.android.support.DaggerFragment
 import mor.aliakbar.restaurantnearme.R
 import mor.aliakbar.restaurantnearme.databinding.FragmentProfileBinding
-import mor.aliakbar.restaurantnearme.viewmodel.ViewModelFactory
+import mor.aliakbar.restaurantnearme.ui.ViewModelFactory
 import javax.inject.Inject
 
 class ProfileFragment : DaggerFragment() {

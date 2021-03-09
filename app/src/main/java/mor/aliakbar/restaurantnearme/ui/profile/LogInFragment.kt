@@ -1,20 +1,18 @@
 package mor.aliakbar.restaurantnearme.ui.profile
 
-import android.app.Service
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import dagger.android.support.DaggerFragment
 import mor.aliakbar.restaurantnearme.R
 import mor.aliakbar.restaurantnearme.databinding.FragmentLogInBinding
-import mor.aliakbar.restaurantnearme.viewmodel.ViewModelFactory
+import mor.aliakbar.restaurantnearme.ui.ViewModelFactory
 import javax.inject.Inject
 
 

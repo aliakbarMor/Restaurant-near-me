@@ -19,7 +19,8 @@ import mor.aliakbar.restaurantnearme.R
 import mor.aliakbar.restaurantnearme.databinding.FragmentHomeBinding
 import mor.aliakbar.restaurantnearme.storage.database.model.Restaurant
 import mor.aliakbar.restaurantnearme.storage.sharedPrefs.PreferencesManager
-import mor.aliakbar.restaurantnearme.viewmodel.ViewModelFactory
+import mor.aliakbar.restaurantnearme.ui.ViewModelFactory
+import timber.log.Timber
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
@@ -50,9 +51,8 @@ class HomeFragment : DaggerFragment(), RestListener,
         viewModel.restaurants.observe(viewLifecycleOwner, {
             if (it != null) {
                 if (restaurantsAdapter == null) {
-                    val itemViewModel = ViewModelProvider(
-                        this, viewModelFactory
-                    ).get(RestaurantItemViewModel::class.java)
+                    val itemViewModel = ViewModelProvider(this, viewModelFactory)
+                        .get(RestaurantItemViewModel::class.java)
                     restaurantsAdapter =
                         RestaurantsAdapter(it as ArrayList<Restaurant>, itemViewModel, this)
                     binding.recyclerView.adapter = restaurantsAdapter

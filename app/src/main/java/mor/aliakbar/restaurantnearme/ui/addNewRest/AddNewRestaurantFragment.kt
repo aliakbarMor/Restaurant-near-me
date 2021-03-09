@@ -13,15 +13,15 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.mapbox.mapboxsdk.Mapbox.getApplicationContext
-import androidx.navigation.fragment.findNavController
 import dagger.android.support.DaggerFragment
 import mor.aliakbar.restaurantnearme.R
 import mor.aliakbar.restaurantnearme.api.ApiManager
 import mor.aliakbar.restaurantnearme.databinding.FragmentAddNewRestaurantBinding
 import mor.aliakbar.restaurantnearme.storage.database.model.Food
 import mor.aliakbar.restaurantnearme.storage.database.model.Meal
-import mor.aliakbar.restaurantnearme.viewmodel.ViewModelFactory
+import mor.aliakbar.restaurantnearme.ui.ViewModelFactory
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -53,10 +53,7 @@ class AddNewRestaurantFragment : DaggerFragment() {
     ): View {
 
         binding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.fragment_add_new_restaurant,
-            container,
-            false
+            inflater, R.layout.fragment_add_new_restaurant, container, false
         )
         viewModel = ViewModelProvider(this, viewModelFactory).get(AddNewRestViewModel::class.java)
         binding.viewmodel = viewModel
@@ -84,12 +81,17 @@ class AddNewRestaurantFragment : DaggerFragment() {
             val allItemMeal = addMealAdapter!!.getAllItem()
 
             val latlng = AddNewRestaurantFragmentArgs.fromBundle(requireArguments()).latlng
-            viewModel.insertRest(latlng.latitude, latlng.longitude, allItemFood, allItemMeal)
+            viewModel.insertRestInToDb(latlng.latitude, latlng.longitude, allItemFood, allItemMeal)
         }
+        binding.storeRestaurantsOnTheServer.setOnClickListener{
+            viewModel.insertRestsInToServer()
+
+        }
+
 
         viewModel.eventGoToBackToMapFragment.observe(viewLifecycleOwner) {
             if (it)
-                findNavController().popBackStack()
+                activity?.findNavController(R.id.nav_host_fragment)?.popBackStack()
         }
 
 
@@ -138,9 +140,9 @@ class AddNewRestaurantFragment : DaggerFragment() {
                     .show()
                 return
             }
-            val imageUri: Uri? = data.data
-            binding.imageRest.setImageURI(imageUri)
-            viewModel.setRealPathFromURI(imageUri)
+            val imageUriLocal: Uri? = data.data
+            binding.imageRest.setImageURI(imageUriLocal)
+            viewModel.setRealPathFromURI(imageUriLocal)
         }
     }
 

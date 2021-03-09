@@ -51,7 +51,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:text="@={viewmodel.restaurant.name}"
+                android:text="@={viewmodel.restaurantSaveInDb.name}"
                 app:layout_constraintLeft_toLeftOf="@id/guideline_end"
                 app:layout_constraintRight_toRightOf="@id/guideline_start"
                 app:layout_constraintTop_toBottomOf="@id/name_restaurant" />
@@ -159,6 +159,18 @@
                 app:layout_constraintLeft_toLeftOf="@id/guideline_end"
                 app:layout_constraintRight_toRightOf="@id/guideline_start"
                 app:layout_constraintTop_toBottomOf="@+id/txt_add_meal" />
+            <Button
+                android:id="@+id/storeRestaurantsOnTheServer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="20dp"
+                android:text="ذخیره همه رستوران ها در سرور"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="@id/guideline_end"
+                app:layout_constraintRight_toRightOf="@id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@+id/confirm" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_start"

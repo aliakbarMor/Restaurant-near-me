@@ -18,6 +18,9 @@ class RestaurantItemViewModel @Inject constructor() : ViewModel() {
     @Inject
     lateinit var context: Context
 
+    @Inject
+    lateinit var baseUrl: String
+
     lateinit var restaurant: Restaurant
     lateinit var meal: String
     lateinit var distanceWithMe: String

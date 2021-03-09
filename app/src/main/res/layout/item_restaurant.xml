@@ -31,16 +31,16 @@
                 app:layout_constraintLeft_toRightOf="@id/name_rest"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
                 app:layout_constraintTop_toTopOf="parent"
-                app:loadImg="@{viewmodel.restaurant.imageUrl}" />
+                app:loadImg='@{(viewmodel.restaurant.imageUrl != null)?viewmodel.baseUrl + "img/" + viewmodel.restaurant.imageUrl:null}' />
 
             <TextView
                 android:id="@+id/name_rest"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:gravity="right"
                 android:maxLines="1"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
-                android:gravity="right"
                 android:text="@{viewmodel.restaurant.name}"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -86,6 +86,8 @@
                 android:id="@+id/text_shop_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="2dp"
                 android:drawablePadding="4dp"
                 android:gravity="center"
                 android:text="@{viewmodel.quality}"
@@ -93,8 +95,6 @@
                 android:textSize="12sp"
                 android:textStyle="bold"
                 app:drawableLeftCompat="@drawable/ic_star"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="2dp"
                 app:layout_constraintBottom_toTopOf="@+id/text_distance_with_me"
                 app:layout_constraintEnd_toEndOf="@+id/guidelineEnd" />
 

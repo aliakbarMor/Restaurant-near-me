@@ -24,10 +24,15 @@ class ApiModule {
     }
 
     @Provides
+    fun baseUrl(): String {
+        return "http://192.168.43.132/restaurantnearme/"
+    }
+
+    @Provides
     @Singleton
     fun provideRetrofit(client: OkHttpClient.Builder): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://10.0.2.2/restaurantnearme/")
+            .baseUrl(baseUrl())
             .client(client.build())
             .addConverterFactory(GsonConverterFactory.create())
             .build()

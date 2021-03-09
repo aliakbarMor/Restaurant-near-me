@@ -16,9 +16,10 @@ class Restaurant() : Parcelable {
     var longitude: Double = 0.0
     @SerializedName("image_url")
     var imageUrl: String? = null
+    var imagePathLocal: String? = null
     var distanceWithMe: Long = 1000000
     var quality: Float = 4.5F
-
+    var isInServer: Boolean = true
 
     constructor(parcel: Parcel) : this() {
         id = parcel.readLong()
@@ -28,7 +29,7 @@ class Restaurant() : Parcelable {
         imageUrl = parcel.readString()
         distanceWithMe = parcel.readLong()
         quality = parcel.readFloat()
-
+        isInServer = parcel.readByte() != 0.toByte()
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -39,6 +40,7 @@ class Restaurant() : Parcelable {
         parcel.writeString(imageUrl)
         parcel.writeLong(distanceWithMe)
         parcel.writeFloat(quality)
+        parcel.writeByte(if (isInServer) 1 else 0)
     }
 
     override fun describeContents(): Int {
@@ -54,5 +56,4 @@ class Restaurant() : Parcelable {
             return arrayOfNulls(size)
         }
     }
-
 }

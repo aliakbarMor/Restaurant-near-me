@@ -46,8 +46,8 @@ class AppRepository @Inject constructor(context: Context) {
         return db.restaurantDAO.getAll()
     }
 
-    fun getAllRestaurants(): List<Restaurant> {
-        return db.restaurantDAO.getAllRest()
+    fun getRestaurantsByStoredOnServer(isInServer: Boolean): List<Restaurant> {
+        return db.restaurantDAO.getRestaurantsByStoredOnServer(isInServer)
     }
 
     fun insertFood(food: Food) {
@@ -70,13 +70,16 @@ class AppRepository @Inject constructor(context: Context) {
         shp.saveIsFakeDataAdd(isFakeDataAdd)
     }
 
-    fun loadIsFakeDataAdd(): Boolean? {
+    fun loadIsFakeDataAdd(): Boolean {
         return shp.loadIsFakeDataAdd()
     }
 
     fun updateColumnDistanceWithMe(distanceWithMe: Long, id: Long) {
-        executor.execute { db.restaurantDAO.update(distanceWithMe, id) }
+        executor.execute { db.restaurantDAO.updateDistance(distanceWithMe, id) }
+    }
 
+    fun deleteRestaurant(id: Long) {
+        executor.execute { db.restaurantDAO.delete(id) }
     }
 
     fun insertAllMeals(meals: ArrayList<Meal>) {
@@ -86,8 +89,12 @@ class AppRepository @Inject constructor(context: Context) {
     fun getMealsByRestaurantId(restaurantId: Long): List<Meal> {
         return db.mealDAO.getMealsByRestaurantId(restaurantId)
     }
+
     fun deleteAllMeals() {
         executor.execute { db.mealDAO.deleteAll() }
     }
 
+    fun deleteMeal(id: Long) {
+        executor.execute { db.mealDAO.delete(id) }
+    }
 }

@@ -34,7 +34,7 @@
                     android:layout_height="70dp"
                     app:layout_collapseMode="parallax"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:loadImgRest="@{detailViewModel.restaurant.imageUrl}" />
+                    app:loadImgRest='@{(detailViewModel.restaurant.imageUrl != null)?detailViewModel.baseUrl + "img/" + detailViewModel.restaurant.imageUrl:null}' />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 

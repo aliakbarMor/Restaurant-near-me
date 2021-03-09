@@ -48,27 +48,35 @@ class MapViewModel @Inject constructor() : ViewModel() {
 
     fun init() {
         getRestaurant()
+        restaurants.observeForever {
+        }
+
     }
 
     private fun getRestaurant() {
-        addFakeData()
-        getRestaurantsFromDb()
+//        addFakeData()
         if (NetworkUtility.isOnline(context)) {
+            var restaurantsNotSaveInServer: List<Restaurant>? = null
+            Executors.newSingleThreadExecutor().execute {
+                restaurantsNotSaveInServer = repository.getRestaurantsByStoredOnServer(false)
+            }
+
             apiManager.getRestaurants(object : Callback<List<Restaurant>> {
                 override fun onResponse(
                     call: Call<List<Restaurant>>,
                     response: Response<List<Restaurant>>
                 ) {
                     repository.deleteAllRestaurants()
-                    response.body()
-                        ?.let { repository.insertAllRestaurant(it as ArrayList<Restaurant>) }
                     restaurants.value = response.body()
+                    restaurants.value = restaurants.value!! + restaurantsNotSaveInServer!!
+                    repository.insertAllRestaurant(restaurants.value as ArrayList<Restaurant>)
                     restaurants.value?.sortedBy { restaurant ->
                         restaurant.distanceWithMe
                     }
                 }
 
                 override fun onFailure(call: Call<List<Restaurant>>, t: Throwable) {
+                    getRestaurantsFromDb()
                     Timber.i(t.toString())
                 }
             })
@@ -86,6 +94,8 @@ class MapViewModel @Inject constructor() : ViewModel() {
                     Timber.i(t.toString())
                 }
             })
+        } else {
+            getRestaurantsFromDb()
         }
     }
 
@@ -122,12 +132,10 @@ class MapViewModel @Inject constructor() : ViewModel() {
 
         minute = sharedPrefs.loadMinutesNotif()
 
-        val rests = repository.getAllRestaurants()
-
         var theNearestRestaurant: Restaurant? = null
         var theNearestRestaurantDistance: Long? = null
 
-        for (rest in rests) {
+        for (rest in restaurants.value!!) {
             val calculationByDistance = Utility.calculationDistance(
                 latitude, longitude, rest.latitude, rest.longitude
             )
@@ -193,7 +201,7 @@ class MapViewModel @Inject constructor() : ViewModel() {
     }
 
     fun addFakeData() {
-        if (!repository.loadIsFakeDataAdd()!!) {
+        if (!repository.loadIsFakeDataAdd()) {
             Utility.createSampleDataRest(context)
             Utility.createSampleDataFood(context)
             Utility.createSampleDataMeal(context)

@@ -1,4 +1,4 @@
-package mor.aliakbar.restaurantnearme.viewmodel
+package mor.aliakbar.restaurantnearme.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

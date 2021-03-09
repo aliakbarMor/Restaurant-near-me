@@ -1,7 +1,6 @@
 package mor.aliakbar.restaurantnearme.ui.food
 
 import android.content.Context
-import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.BindingAdapter
@@ -26,6 +25,9 @@ class RestDetailViewModel @Inject constructor() : ViewModel() {
     //region variables
     @Inject
     lateinit var context: Context
+
+    @Inject
+    lateinit var baseUrl: String
 
     @Inject
     lateinit var repository: AppRepository
@@ -128,12 +130,12 @@ class RestDetailViewModel @Inject constructor() : ViewModel() {
     companion object {
         @JvmStatic
         @BindingAdapter("app:loadImgRest")
-        fun loadImgRest(imageView: ImageView, path: String?) {
+        fun loadImgRest(imageView: ImageView, url: String?) {
             val glide = Glide
                 .with(imageView.context)
-            if (path != null) {
+            if (url != null) {
                 glide
-                    .load(path)
+                    .load(url)
                     .centerCrop()
                     .into(imageView)
             } else {
@@ -147,6 +149,12 @@ class RestDetailViewModel @Inject constructor() : ViewModel() {
                         .into(imageView)
             }
         }
+    }
+
+    fun getUrl(s: String): String? {
+        return if (restaurant.imageUrl != null) {
+            baseUrl + "img/" + restaurant.imageUrl
+        } else null
     }
 
     fun onVoteStarClick(point: Int) {
